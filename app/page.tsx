@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { CATEGORIES, NG_WORDS, type Category } from "@/lib/prompt";
 
 const STORAGE_KEY = "adoptedThemes_v1";
@@ -13,6 +13,18 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [copied, setCopied] = useState<string | null>(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  const adjustTextareaHeight = () => {
+    const el = textareaRef.current;
+    if (!el) return;
+    el.style.height = "auto";
+    el.style.height = `${el.scrollHeight}px`;
+  };
+
+  useEffect(() => {
+    adjustTextareaHeight();
+  }, [pastThemes]);
 
   useEffect(() => {
     try {
@@ -261,7 +273,8 @@ export default function Home() {
           </div>
           <textarea
             id="pastThemes"
-            className="input resize-none"
+            ref={textareaRef}
+            className="input resize-none overflow-hidden"
             placeholder="採用したテーマを下のチェックで保存すると、次回ここに自動入力されます"
             value={pastThemes}
             onChange={(e) => setPastThemes(e.target.value)}

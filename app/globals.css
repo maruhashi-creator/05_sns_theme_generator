@@ -1,26 +1,46 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  --color-canvas: #F7F5F2;
+  --color-ink: #1C1917;
+  --color-primary: #F69F9A;
+  --color-primary-hover: #E08880;
+  --color-primary-active: #D07870;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  --background: #F7F5F2;
+  --foreground: #1C1917;
+}
+
+@layer base {
+  body {
+    @apply bg-canvas text-ink;
+    font-family: "YakuHanJP", var(--font-inter), sans-serif;
+  }
+
+  /* Prevent iOS Safari auto-zoom on input focus */
+  input, select, textarea {
+    font-size: 16px !important;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  .card {
+    @apply bg-white rounded-2xl shadow-sm border border-stone-100;
+  }
+
+  .btn-primary {
+    @apply bg-primary hover:bg-primary-hover active:bg-primary-active text-white font-semibold rounded-xl transition-colors disabled:opacity-40 cursor-pointer;
+  }
+
+  .input {
+    @apply w-full border border-stone-200 rounded-xl px-4 py-3 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-stone-400 focus:border-transparent transition;
+  }
 }

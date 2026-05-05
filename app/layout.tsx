@@ -5,7 +5,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
-  title: "SNS投稿テーマジェネレーターくん | AI Apps #5",
+  title: "投稿テーマジェネレータくん | AI Apps #5",
   description: "精神疾患を持つ方に寄り添うInstagram投稿テーマをAIが提案します",
 };
 

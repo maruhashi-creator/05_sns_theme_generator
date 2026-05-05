@@ -120,7 +120,7 @@ export default function Home() {
       <div className="max-w-2xl mx-auto space-y-6">
         <header className="text-center space-y-2">
           <h1 className="text-4xl font-bold tracking-tight text-ink">
-            SNS投稿テーマジェネレーターくん
+            投稿テーマジェネレータくん
           </h1>
           <p className="text-stone-500">
             Instagram投稿テーマを10案提案します
